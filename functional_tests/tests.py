@@ -1,9 +1,9 @@
+from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-import unittest
 
 
-class NewVisitorTest(unittest.TestCase):
+class NewVisitorTest(LiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Chrome()
@@ -19,7 +19,7 @@ class NewVisitorTest(unittest.TestCase):
 
     def test_can_start_a_list_and_retrieve_it_later(self):
         # 웹사이트 접근
-        self.browser.get('http://localhost:8000')
+        self.browser.get(self.live_server_url)
 
         # 웹 페이지 타이틀 헤더 To-Do 
         #assert 'To-Do' in browser.title, "Browser title was " + browser.title
@@ -57,6 +57,3 @@ class NewVisitorTest(unittest.TestCase):
         self.fail('Finish the test!')
 
         # 해당 url 에 접속하면, 작업 목록이 그대로 나온다.
-
-if __name__ == '__main__':
-    unittest.main()
