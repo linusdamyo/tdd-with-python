@@ -36,20 +36,22 @@ class NewVisitorTest(unittest.TestCase):
         # 1: 공작깃털 사기 아이템이 추가된다.
         inputbox.send_keys(Keys.ENTER)
 
-        table = self.browser.find_element_by_id('id_list_table')
-        rows = table.find_elements_by_tag_name('tr')
-        self.assertTrue(
-            any(row.text == '1: 공작깃털 사기' for row in rows),
-            "신규 작업이 테이블에 표시되지 않는다"
-        )
-
         # 추가 아이템을 입력할 여분의 텍스트 상자가 보인다.
         # 다시 공작깃털 이용해서 그물 만들기 입력
-        self.fail('Finish the test!')
+        inputbox = self.browser.find_element_by_id('id_new_item')
+        inputbox.send_keys('공작깃털을 이용해서 그물 만들기')
+        inputbox.send_keys(Keys.ENTER)
 
         # 페이지가 다시 갱신되고, 두개 아이템이 목록에 보인다.
+        table = self.browser.find_element_by_id('id_list_table')
+        rows = table.find_elements_by_tag_name('tr')
+        self.assertIn('1: 공작깃털 사기', [row.text for row in rows])
+        self.assertIn('2: 공작깃털을 이용해서 그물 만들기', [row.text for row in rows])
+
+
         # 사이트는 특정 url 을 생성한다.
         # 이때 url에 대한 설명도 함께 제공된다.
+        self.fail('Finish the test!')
 
         # 해당 url 에 접속하면, 작업 목록이 그대로 나온다.
 
