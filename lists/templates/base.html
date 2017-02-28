@@ -27,6 +27,7 @@
 				<a class="btn navbar-btn navbar-right" id="id_logout" href="{% url 'logout' %}">로그아웃</a>
 				<span class="navbar-text navbar-right">로그인됨 {{ user.email }}</span>
 			{% else %}
+			<a class="btn navbar-btn navbar-right" id="id_logout" href="{% url 'logout' %}">로그아웃</a>
 				<a class="btn navbar-btn navbar-right" id="id_login" href="#">로그인</a>
 			{% endif %}
 		</nav>
