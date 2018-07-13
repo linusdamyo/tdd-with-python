@@ -1,6 +1,6 @@
 Django==1.7
 get==0.0.0
-gunicorn==18.0
+gunicorn==19.5.0
 post==0.0.0
 public==0.0.0
 query-string==0.0.0
