@@ -1,4 +1,4 @@
-Django==1.7
+Django>=1.7
 get==0.0.0
 gunicorn==19.5.0
 post==0.0.0
